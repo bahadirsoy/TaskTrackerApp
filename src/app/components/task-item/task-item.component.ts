@@ -11,10 +11,15 @@ import { TaskService } from 'src/app/services/task.service';
 export class TaskItemComponent {
   @Input() task!: Task;
   @Output() onDeleteTask: EventEmitter<Task> = new EventEmitter();
+  @Output() onToggleReminder: EventEmitter<Task> = new EventEmitter();
 
   faTimes = faTimes;
 
   onDelete(task: Task): void {
     this.onDeleteTask.emit(task);
+  }
+
+  onToggle(task: Task): void {
+    this.onToggleReminder.emit(task);
   }
 }

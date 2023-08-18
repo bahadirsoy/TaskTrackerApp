@@ -21,4 +21,9 @@ export class TasksComponent {
   deleteTask(task: Task): void {
     this.service.deleteTask(task).subscribe(() => this.tasks = this.tasks.filter(t => t.id != task.id));
   }
+
+  toggleReminder(task: Task): void {
+    task.reminder = !task.reminder;
+    this.service.updateTaskReminder(task).subscribe();
+  }
 }

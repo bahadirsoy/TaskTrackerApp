@@ -17,4 +17,8 @@ export class TasksComponent {
   ngOnInit(): void {
     this.service.getTasks().subscribe((tasks) => this.tasks = tasks);
   }
+
+  deleteTask(task: Task): void {
+    this.service.deleteTask(task).subscribe(() => this.tasks = this.tasks.filter(t => t.id != task.id));
+  }
 }
